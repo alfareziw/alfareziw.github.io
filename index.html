@@ -162,7 +162,11 @@
               </button>
             </form>
             <div class="alert alert-success alert-dismissible fade show d-none alert-kirim" role="alert">
-              <strong>Terimakasih!</strong> Pesan anda sudah saya terima.
+              <strong>Terimakasih!</strong> Pesan anda sudah terkirim :)
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show d-none alert-kirimgagal" role="alert">
+              <strong>Maaf!</strong> Pesan anda tidak terkirim. Silahkan refresh laman website atau cek kembali koneksi anda :(
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </div>
@@ -190,6 +194,7 @@
       const btnKirim = document.querySelector('.btn-kirim');
       const btnLoading = document.querySelector('.btn-loading');
       const alertKirim = document.querySelector('.alert-kirim');
+      const alertKirimgagal = document.querySelector('.alert-kirimgagal');
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -202,13 +207,17 @@
             // Tampilkan Tombol Kirim, Hilangkan Tombol Loading
             btnLoading.classList.toggle('d-none');
             btnKirim.classList.toggle('d-none');
-            // Tampilkan Alert
+            // Tampilkan Alert Jika Berhasil
             alertKirim.classList.toggle('d-none');
             // Reset Form
             form.reset();
             console.log('Success!', response);
           })
-          .catch((error) => console.error('Error!', error.message));
+          .catch((error) => {
+            // Tampilkan Alert Jika Gagal
+            alertKirimgagal.classList.toggle('d-none');
+            console.error('Error!', error.message);
+          });
       });
     </script>
   </body>
