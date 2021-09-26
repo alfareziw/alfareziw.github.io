@@ -189,34 +189,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
     <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwoLlXcmEb-UZC103o_Ke2KE67zVxf7XGKteag4lsRCfOLyrBZ3xEUCM4yCoU8ZrXI/exec';
-      const form = document.forms['portfolio-contact'];
-      const btnKirim = document.querySelector('.btn-kirim');
-      const btnLoading = document.querySelector('.btn-loading');
-      const alertKirim = document.querySelector('.alert-kirim');
-      const alertKirimgagal = document.querySelector('.alert-kirimgagal');
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwoLlXcmEb-UZC103o_Ke2KE67zVxf7XGKteag4lsRCfOLyrBZ3xEUCM4yCoU8ZrXI/exec";
+      const form = document.forms["portfolio-contact"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+      const alertKirim = document.querySelector(".alert-kirim");
+      const alertKirimgagal = document.querySelector(".alert-kirimgagal");
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
         // Tombol Submit Diklik
         // Tampilkan Tombol Loading, Hilangkan Tombol Kirim
-        btnLoading.classList.toggle('d-none');
-        btnKirim.classList.toggle('d-none');
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
           .then((response) => {
             // Tampilkan Tombol Kirim, Hilangkan Tombol Loading
-            btnLoading.classList.toggle('d-none');
-            btnKirim.classList.toggle('d-none');
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
             // Tampilkan Alert Jika Berhasil
-            alertKirim.classList.toggle('d-none');
+            alertKirim.classList.toggle("d-none");
             // Reset Form
             form.reset();
-            console.log('Success!', response);
+            console.log("Success!", response);
           })
           .catch((error) => {
             // Tampilkan Alert Jika Gagal
-            alertKirimgagal.classList.toggle('d-none');
-            console.error('Error!', error.message);
+            alertKirimgagal.classList.toggle("d-none");
+            console.error("Error!", error.message);
           });
       });
     </script>
